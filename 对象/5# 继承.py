@@ -54,9 +54,9 @@ class Hashiqi(Dog):
 d = Dog()
 h = Hashiqi()
 
-# d.run()
-# d.sleep()
-# d.bark()
+d.run()
+d.sleep()
+d.bark()
 
 # r = isinstance(d , Dog)
 # r = isinstance(d , Animal)

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # 创建几个函数
+import time
 
 def add(a , b):
     '''
@@ -85,7 +86,7 @@ f3 = begin_end(mul)
 # 在定义函数时，可以通过@装饰器，来使用指定的装饰器，来装饰当前的函数
 #   可以同时为一个函数指定多个装饰器，这样函数将会安装从内向外的顺序被装饰
 
-def fn3(old):
+def fn3(fun):
     '''
         用来对其他函数进行扩展，使其他函数可以在执行前打印开始执行，执行后打印执行结束
 
@@ -95,9 +96,12 @@ def fn3(old):
     # 创建一个新函数
     def new_function(*args , **kwargs):
         print('fn3装饰~开始执行~~~~')
+        begin_time = time.time()
         # 调用被扩展的函数
-        result = old(*args , **kwargs)
+        result = fun(*args , **kwargs)
         print('fn3装饰~执行结束~~~~')
+        end_time = time.time()
+        print(end_time - begin_time)
         # 返回函数的执行结果
         return result
 
@@ -107,6 +111,8 @@ def fn3(old):
 @fn3
 @begin_end
 def say_hello():
+    for i in range(10000000):
+        i = i
     print('大家好~~~')
 
 say_hello()

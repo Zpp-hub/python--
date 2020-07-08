@@ -45,7 +45,7 @@ def fn(func, lst):
 
     # 返回新列表
     return new_list
-
+print('高阶函数',fn(fn2, l))
 
 # def fn4(i):
 #     if i % 3 == 0:
@@ -85,7 +85,7 @@ fn6 = lambda a, b: a + b
 
 
 r = filter(lambda i: i > 5, l)
-# print(list(r))
+print(list(r))
 
 # map()
 # map()函数可以对可跌倒对象中的所有元素做指定的操作，然后将其添加到一个新的对象中返回
@@ -119,3 +119,21 @@ l = [2, 5, '1', 3, '6', '4']
 print('排序前:', l)
 print(sorted(l, key=int))
 print('排序后:', l)
+
+'''
+①从参数方面来讲：
+map()函数：
+　　map()包含两个参数，第一个是参数是一个函数，第二个是序列（列表或元组）。其中，函数（即map的第一个参数位置的函数）可以接收一个或多个参数。
+reduce()函数：
+reduce() 第一个参数是函数，第二个是 序列（列表或元组）。但是，其函数必须接收两个参数。
+
+②从对传进去的数值作用来讲：
+map()是将传入的函数依次作用到序列的每个元素，每个元素都是独自被函数“作用”一次；
+reduce()是将传人的函数作用在序列的第一个元素得到结果后，把这个结果继续与下一个元素作用（累积计算），
+最终结果是所有的元素相互作用的结果。
+'''
+# 计算：lambda和reduce实现1到100的累加
+from functools import reduce
+print(reduce(lambda x,y:sum([x,y]),range(1,101)))  #第一个参数是一个函数，第二个参数是一个序列
+print(map(lambda x,y:sum([x,y]),range(1,101)))  #第一个参数是一个函数，第二个参数是一个序列
+print(list(map(lambda x,y:sum([x,y]),range(1,101),range(1,101))))  #第一个参数是一个函数，第二个参数是一个序列

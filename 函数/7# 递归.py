@@ -78,7 +78,7 @@ def factorial(n):
     return n * factorial(n - 1)
 
 
-# print(factorial(10))
+print(factorial(3))
 
 # 练习
 #   创建一个函数 power 来为任意数字做幂运算 n ** i
