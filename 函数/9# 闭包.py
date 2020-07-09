@@ -12,16 +12,20 @@
     如果外函数在结束的时候发现有自己的临时变量将来会在内部函数中用到，就把这个临时变量绑定给了内部函数，然后自己再结束。
 '''
 
-#闭包函数的实例
+
+# 闭包函数的实例
 # outer是外部函数 a和b都是外函数的临时变量
-def outer( a ):
+def outer(a):
     b = 10
+
     # inner是内函数
     def inner():
         # 在内函数中 用到了外函数的临时变量
-        print(a+b)
+        print(a + b)
+
     # 外函数的返回值是内函数的引用
     return inner
+
 
 # 在这里我们调用外函数传入参数5
 # 此时外函数两个临时变量 a是5 b是10 ，并创建了内函数，然后把内函数的引用返回存给了demo
@@ -29,23 +33,22 @@ def outer( a ):
 demo = outer(5)
 # 我们调用内部函数，看一看内部函数是不是能使用外部函数的临时变量
 # demo存了外函数的返回值，也就是inner函数的引用，这里相当于执行inner函数
-demo() # 15
+demo()  # 15
 
 demo2 = outer(7)
-demo2()#17
-
+demo2()  # 17
 
 
 def fn():
-
     a = 10
 
     # 函数内部再定义一个函数
     def inner():
-        print('我是fn2' , a)
+        print('我是fn2', a)
 
     # 将内部函数 inner作为返回值返回
     return inner
+
 
 # r是一个函数，是调用fn()后返回的函数
 # 这个函数是在fn()内部定义，并不是全局函数
@@ -53,6 +56,7 @@ def fn():
 r = fn()
 
 r()
+
 
 # 求多个数的平均值
 # nums = [50,30,20,10,77]
@@ -69,13 +73,14 @@ def make_averager():
     nums = []
 
     # 创建一个函数，用来计算平均值
-    def averager(n) :
+    def averager(n):
         # 将n添加到列表中
         nums.append(n)
         # 求平均值
-        return sum(nums)/len(nums)
+        return sum(nums) / len(nums)
 
     return averager
+
 
 averager = make_averager()
 
@@ -83,5 +88,3 @@ print(averager(10))
 print(averager(20))
 print(averager(30))
 print(averager(40))
-
-

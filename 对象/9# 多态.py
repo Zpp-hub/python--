@@ -35,7 +35,7 @@ class gradapa(object):
         self.money = money
 
     def p(self):
-        print("this is gradapa")
+        print("this is gradapa %d" % self.money)
 
 
 class father(gradapa):
@@ -69,13 +69,6 @@ mother1 = mother(1000, "老师")
 fc(gradapa1)  # 这里的多态性体现是向同一个函数，传递不同参数后，可以实现不同功能.
 fc(father1)
 print(fc(mother1))
-
-
-
-
-
-
-
 
 # 定义两个类
 class A:
@@ -156,3 +149,19 @@ print(len(b))
 #       - 保证了对象的可扩展性
 #   多态
 #       - 保证了程序的灵活性
+
+
+class Mother():
+    def run(self):
+        print('Mother run!')
+
+
+class Father():
+    def run(self):
+        print('father run!')
+
+def run(obj):
+    obj.run()
+
+mother = Mother()
+run(mother)
